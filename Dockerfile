@@ -1,8 +1,25 @@
-FROM python:3.14-slim
+# ===== Base Image (CUDA + Python) =====
+FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# ===== System Dependencies =====
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip python3-venv git wget curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# ===== Workdir =====
 WORKDIR /app
-RUN apt-get update && apt-get install -y git ffmpeg libsm6 libxext6
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
-COPY . .
-EXPOSE 8501
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+# ===== Copy project files =====
+COPY . /app
+
+# ===== Install Python dependencies =====
+RUN pip3 install --upgrade pip \
+ && pip3 install --no-cache-dir -r requirements.txt
+
+# ===== Gradio Port =====
+EXPOSE 7860
+
+# ===== Run App =====
+CMD ["python3", "app.py"]
