@@ -273,7 +273,7 @@ with gr.Blocks() as app:
 
 app.launch(share=True)
 
-
+#Some Prompts for image generation
 
 
 # 1. Realistic photo of a majestic wolf howling at the moon, eerie and powerful.
