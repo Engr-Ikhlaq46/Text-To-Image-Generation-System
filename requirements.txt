@@ -1,7 +1,8 @@
-streamlit
-torch
-diffusers
+torch --extra-index-url https://download.pytorch.org/whl/cu121
+diffusers==0.31.0
 transformers
 accelerate
 safetensors
+gradio
+datasets
 Pillow
