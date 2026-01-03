@@ -1,0 +1,27 @@
+[project]
+name = "stable-diffusion-gradio-app"
+version = "1.0.0"
+description = "Stable Diffusion v1.5 Image Generator with Feedback Memory, History, and Gradio UI"
+requires-python = ">=3.10"
+
+authors = [
+  { name="Your Name", email="you@example.com" }
+]
+
+dependencies = [
+  "torch",
+  "diffusers==0.31.0",
+  "transformers",
+  "accelerate",
+  "safetensors",
+  "gradio",
+  "datasets",
+  "Pillow",
+]
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
