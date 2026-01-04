@@ -20,5 +20,6 @@ This project is an AI Image Generator built using **Stable Diffusion v1.5, Huggi
 ## 🚀 Run Locally
 
 ```bash
-pip install -r requirements.txt
-python app.py
+pip install poetry
+poetry install
+
